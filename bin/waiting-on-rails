@@ -2,4 +2,38 @@
 
 $: << File.expand_path('../../lib', __FILE__)
 
-puts 'nothing to do yet'
+require 'waiting_on_rails/player'
+require 'pty'
+
+if not File.exists?('script/rails') or not ARGV.find { |arg| ['server', 's'].include? arg }
+  exec 'rails', *ARGV
+end
+
+PTY.spawn('rails', *ARGV) do |output, input, pid|
+  player = WaitingOnRails::Player.new
+  player.start
+
+  %w(TERM INT).each do |signal|
+    Signal.trap signal do
+      player.stop
+      Process.kill signal, pid
+      exit(1)
+    end
+  end
+
+  while true
+    begin
+      line = output.readline
+      puts line
+
+      if line =~ /Listening on/
+        player.stop
+      end
+    rescue EOFError
+      break
+    rescue Errno::EIO
+      player.stop
+      exit(1)
+    end
+  end
+end

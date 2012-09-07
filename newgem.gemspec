@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = '>= 1.3.6'
   s.rubyforge_project         = 'waiting_on_rails'
 
-  s.files        = Dir['{lib}/**/*.rb', 'bin/*', 'LICENSE', '*.md']
+  s.files        = Dir['{lib}/**/*.rb', 'bin/*', 'vendor/*', 'LICENSE', '*.md']
   s.require_path = 'lib'
   s.executables  = ['waiting-on-rails']
 end
