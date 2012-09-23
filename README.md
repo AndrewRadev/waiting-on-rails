@@ -4,4 +4,3 @@
 - Extract rails spawning logic somehow
 - Use CC-licensed elevator music
 - Add more music: Japanese traffic light?
-- Implement `waiting-on-rake`, which simply waits for the end of the task to stop the music
