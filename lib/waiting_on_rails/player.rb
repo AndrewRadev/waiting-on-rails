@@ -21,7 +21,7 @@ module WaitingOnRails
     private
 
     def music_path
-      File.expand_path("#{File.dirname(__FILE__)}/../../vendor/elevator.mp3")
+      File.expand_path("#{File.dirname(__FILE__)}/../../vendor/attempt_1.mp3")
     end
   end
 end
