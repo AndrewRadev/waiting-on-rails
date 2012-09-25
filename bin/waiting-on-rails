@@ -2,51 +2,6 @@
 
 $: << File.expand_path('../../lib', __FILE__)
 
-require 'waiting_on_rails/player'
-require 'pty'
+require 'waiting_on_rails/rails'
 
-if not File.exists?('script/rails') or not ARGV.find { |arg| ['server', 's'].include? arg }
-  exec 'rails', *ARGV
-end
-
-def matches_server_start?(string)
-  patterns = [
-    'WEBrick::HTTPServer#start done', # WEBrick
-    'Listening on',                   # Thin
-  ]
-
-  patterns.any? { |p| p === string }
-end
-
-PTY.spawn('rails', *ARGV) do |output, input, pid|
-  player = WaitingOnRails::Player.new
-  player.start
-
-  %w(TERM INT).each do |signal|
-    Signal.trap signal do
-      player.stop
-      Process.kill signal, pid
-      loop do
-        begin
-          puts output.readline
-        rescue EOFError
-          break
-        end
-      end
-      exit(1)
-    end
-  end
-
-  loop do
-    begin
-      line = output.readline
-      puts line
-      player.stop if matches_server_start?(line)
-    rescue EOFError
-      break
-    rescue Errno::EIO
-      player.stop
-      exit(1)
-    end
-  end
-end
+WaitingOnRails::Rails.new(ARGV).run
