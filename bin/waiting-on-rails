@@ -17,6 +17,13 @@ PTY.spawn('rails', *ARGV) do |output, input, pid|
     Signal.trap signal do
       player.stop
       Process.kill signal, pid
+      loop do
+        begin
+          puts output.readline
+        rescue EOFError
+          break
+        end
+      end
       exit(1)
     end
   end
