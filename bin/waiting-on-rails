@@ -9,6 +9,15 @@ if not File.exists?('script/rails') or not ARGV.find { |arg| ['server', 's'].inc
   exec 'rails', *ARGV
 end
 
+def matches_server_start?(string)
+  patterns = [
+    'WEBrick::HTTPServer#start done', # WEBrick
+    'Listening on',                   # Thin
+  ]
+
+  patterns.any? { |p| p === string }
+end
+
 PTY.spawn('rails', *ARGV) do |output, input, pid|
   player = WaitingOnRails::Player.new
   player.start
@@ -28,14 +37,11 @@ PTY.spawn('rails', *ARGV) do |output, input, pid|
     end
   end
 
-  while true
+  loop do
     begin
       line = output.readline
       puts line
-
-      if line =~ /Listening on/
-        player.stop
-      end
+      player.stop if matches_server_start?(line)
     rescue EOFError
       break
     rescue Errno::EIO

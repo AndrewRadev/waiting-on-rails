@@ -1,6 +1,7 @@
 ## TODO
 
-- Make `rails s` and `waiting-on-rails s` have the same behaviour upon receiving `INT` (regarding message output).
-- Extract rails spawning logic somehow
+- Support different webservers
 - Use CC-licensed elevator music
 - Add more music: Japanese traffic light?
+- Implement continuing from a point
+- Implement simple configuration
