@@ -3,6 +3,8 @@ require 'simplecov'
 
 SimpleCov.start
 
+require 'support/matchers'
+
 RSpec.configure do |config|
   config.around do |example|
     # Modify the PATH to add our own stubs
