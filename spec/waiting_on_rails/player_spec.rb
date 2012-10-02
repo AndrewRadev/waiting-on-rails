@@ -1,7 +1,6 @@
 require 'spec_helper'
 require 'waiting_on_rails/player'
 
-# TODO (2012-09-11) Ensure process cleanup -- delete all child PIDs on exit?
 module WaitingOnRails
   describe Player do
     let(:player) { Player.new }

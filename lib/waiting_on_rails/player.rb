@@ -11,7 +11,7 @@ module WaitingOnRails
 
     def stop
       raise "Player was not started." if @pid.nil?
-      Process.kill('TERM', @pid)
+      Process.kill(15, @pid)
       Process.wait(@pid)
       true
     rescue Errno::ESRCH, Errno::ECHILD

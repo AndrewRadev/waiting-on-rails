@@ -20,4 +20,17 @@ RSpec.configure do |config|
 
     ENV['PATH'] = original_path
   end
+
+  config.after(:suite) do
+    # Clean up all child pids
+    pid  = Process.pid
+    pipe = IO.popen("ps --ppid #{pid}")
+
+    child_pids = pipe.readlines.map do |line|
+      child_pid, *_ = line.split(/\s+/)
+      child_pid.to_i if child_pid != ''
+    end.compact
+
+    child_pids.each { |pid| Process.kill(9, pid) }
+  end
 end
