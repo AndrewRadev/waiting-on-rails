@@ -5,17 +5,16 @@ module WaitingOnRails
   class Exit < Exception; end
 
   class Rails
-    def initialize(args)
-      @args   = args
-      @player = WaitingOnRails::Player.new
+    def initialize(player = nil)
+      @player = player || WaitingOnRails::Player.new
     end
 
-    def run
-      if not should_play_music?(@args)
-        exec_rails_command
+    def run(args)
+      if not should_play_music?(args)
+        exec_rails_command(args)
       end
 
-      spawn_rails_subprocess do |output, pid|
+      spawn_rails_subprocess(args) do |output, pid|
         @player.start
         handle_signals(pid, output)
         main_loop(output)
@@ -28,14 +27,14 @@ module WaitingOnRails
 
     private
 
-    def spawn_rails_subprocess
-      PTY.spawn('rails', *@args) do |output, input, pid|
+    def spawn_rails_subprocess(args)
+      PTY.spawn('rails', *args) do |output, input, pid|
         yield output, pid
       end
     end
 
     def exec_rails_command
-      exec 'rails', *@args
+      exec 'rails', *args
     end
 
     def main_loop(io)

@@ -4,4 +4,4 @@ $: << File.expand_path('../../lib', __FILE__)
 
 require 'waiting_on_rails/rails'
 
-WaitingOnRails::Rails.new(ARGV).run
+WaitingOnRails::Rails.new.run(ARGV)

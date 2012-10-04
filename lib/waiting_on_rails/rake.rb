@@ -1,20 +1,18 @@
 require 'pty'
 require 'waiting_on_rails/player'
 
-
 module WaitingOnRails
   class Rake
-    def initialize(args)
-      @args   = args
-      @player = WaitingOnRails::Player.new
+    def initialize(player = nil)
+      @player = player || WaitingOnRails::Player.new
     end
 
-    def run
-      if given_tasks_are_slow?
+    def run(args)
+      if given_tasks_are_slow?(args)
         @player.start
-        Process.wait(spawn_rake_subprocess)
+        Process.wait(spawn_rake_subprocess(args))
       else
-        exec_rake_command
+        exec_rake_command(args)
       end
     ensure
       @player.stop
@@ -22,8 +20,8 @@ module WaitingOnRails
 
     private
 
-    def given_tasks_are_slow?
-      @args.any? { |task| slow_tasks.include?(task) }
+    def given_tasks_are_slow?(args)
+      args.any? { |task| slow_tasks.include?(task) }
     end
 
     def slow_tasks
@@ -32,12 +30,12 @@ module WaitingOnRails
       ]
     end
 
-    def exec_rake_command
-      exec 'rake', *@args
+    def exec_rake_command(args)
+      exec 'rake', *args
     end
 
-    def spawn_rake_subprocess
-      spawn 'rake', *@args
+    def spawn_rake_subprocess(args)
+      spawn 'rake', *args
     end
   end
 end
