@@ -10,7 +10,7 @@ module WaitingOnRails
     end
 
     def stop
-      raise "Player was not started." if @pid.nil?
+      return true if @pid.nil?
       Process.kill(15, @pid)
       Process.wait(@pid)
       true
