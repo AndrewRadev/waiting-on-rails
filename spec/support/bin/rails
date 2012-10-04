@@ -1,12 +1,13 @@
 #! /usr/bin/env ruby
 
-filename = File.expand_path(File.dirname(__FILE__) + '/../../../tmp/rails_output')
+require 'socket'
 
-File.open(filename, 'r') do |pipe|
-  begin
-    while line = pipe.readline
-      puts line
-    end
-  rescue EOFError
+filename = File.expand_path(File.dirname(__FILE__) + '/../../../tmp/rails.socket')
+socket = UNIXServer.new(filename).accept
+
+begin
+  while line = socket.readline
+    puts line
   end
+rescue EOFError
 end
