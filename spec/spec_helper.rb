@@ -4,11 +4,10 @@ require 'simplecov'
 SimpleCov.start
 
 require 'support/matchers'
-require 'support/command'
+require 'support/command_stub'
 require 'support/tmp'
 
 RSpec.configure do |config|
-  config.include Support::Command
   config.include Support::Tmp
 
   config.around do |example|

@@ -3,8 +3,9 @@ require 'waiting_on_rails/rake'
 
 module WaitingOnRails
   describe Rake do
-    let(:player) { Player.new }
-    let(:runner) { Rake.new(player) }
+    let(:player)    { Player.new }
+    let(:runner)    { Rake.new(player) }
+    let(:rake_stub) { Support::CommandStub.new('rake') }
 
     before :each do
       runner.stub(:exec_rake_command)
@@ -15,12 +16,14 @@ module WaitingOnRails
       runner.run(['some_fast_task'])
     end
 
-    it "ensures the player is stopped after the command is over" do
+    it "plays music during the entire running of the command" do
       thread = Thread.new { runner.run(['routes']) }
 
-      init_command_output 'rake'
+      rake_stub.init
+
       player.pid.should be_a_running_process
-      finish_command_output 'rake'
+
+      rake_stub.finish
       thread.join
 
       player.pid.should_not be_a_running_process

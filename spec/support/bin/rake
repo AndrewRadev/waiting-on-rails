@@ -7,7 +7,7 @@ socket = UNIXServer.new(filename).accept
 
 begin
   while line = socket.readline
-    puts socket
+    puts line
   end
 rescue EOFError
 end
