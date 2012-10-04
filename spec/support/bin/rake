@@ -1,0 +1,13 @@
+#! /usr/bin/env ruby
+
+require 'socket'
+
+filename = File.expand_path(File.dirname(__FILE__) + '/../../../tmp/rake.socket')
+socket = UNIXServer.new(filename).accept
+
+begin
+  while line = socket.readline
+    puts socket
+  end
+rescue EOFError
+end

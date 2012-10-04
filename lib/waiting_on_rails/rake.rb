@@ -1,4 +1,3 @@
-require 'pty'
 require 'waiting_on_rails/player'
 
 module WaitingOnRails

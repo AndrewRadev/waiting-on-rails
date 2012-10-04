@@ -4,20 +4,24 @@ require 'simplecov'
 SimpleCov.start
 
 require 'support/matchers'
+require 'support/command'
+require 'support/tmp'
 
 RSpec.configure do |config|
+  config.include Support::Command
+  config.include Support::Tmp
+
   config.around do |example|
     # Modify the PATH to add our own stubs
     original_path = ENV['PATH']
     ENV['PATH'] = "#{File.expand_path('spec/support/bin')}:#{original_path}"
 
-    # Execute each example in its own temporary directory
-    Dir.mktmpdir do |dir|
-      Dir.chdir(dir) do
-        example.call
-      end
-    end
+    # Prepare a "tmp" directory for the tests to work with
+    setup_tmp_directory
 
+    example.call
+
+    remove_tmp_directory
     ENV['PATH'] = original_path
   end
 
