@@ -1,8 +1,6 @@
 ## TODO
 
 - Add a "ding!" at the end
-- Slow rake tasks
-- Specs for Rails and Rake
 - Support different webservers
 
 Maybe later:

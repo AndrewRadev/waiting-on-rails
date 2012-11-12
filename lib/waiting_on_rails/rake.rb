@@ -25,7 +25,33 @@ module WaitingOnRails
 
     def slow_tasks
       [
+        'db:create',
+        'db:drop',
+        'db:fixtures:load',
+        'db:migrate',
+        'db:migrate:status',
+        'db:rollback',
+        'db:schema:dump',
+        'db:schema:load',
+        'db:seed',
+        'db:setup',
+        'db:structure:dump',
+        'db:version',
         'routes',
+        'spec',
+        'spec:controllers',
+        'spec:helpers',
+        'spec:lib',
+        'spec:mailers',
+        'spec:models',
+        'spec:rcov',
+        'spec:requests',
+        'spec:routing',
+        'spec:views',
+        'stats',
+        'test',
+        'test:recent',
+        'test:uncommitted',
       ]
     end
 
