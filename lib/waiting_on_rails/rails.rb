@@ -82,6 +82,7 @@ module WaitingOnRails
       patterns = [
         'WEBrick::HTTPServer#start', # WEBrick
         'Listening on',              # Thin
+        'Ctrl-C to shutdown',        # Mongrel
       ]
 
       patterns.any? { |p| string.include?(p) }
