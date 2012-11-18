@@ -1,7 +1,6 @@
 ## TODO
 
-- Add a "ding!" at the end
-- Support different webservers
+- Write a proper README && deploy!
 
 Maybe later:
   - Implement continuing from a point
