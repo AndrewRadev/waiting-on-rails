@@ -34,7 +34,7 @@ module WaitingOnRails
       end
     end
 
-    def exec_rails_command
+    def exec_rails_command(args)
       exec 'rails', *args
     end
 
