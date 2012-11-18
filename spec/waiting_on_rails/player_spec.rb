@@ -3,7 +3,7 @@ require 'waiting_on_rails/player'
 
 module WaitingOnRails
   describe Player do
-    let(:player) { Player.new }
+    let(:player) { Player.new('test.mp3') }
 
     around :each do |example|
       example.call

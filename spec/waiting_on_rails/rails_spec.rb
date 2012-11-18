@@ -3,7 +3,7 @@ require 'waiting_on_rails/rails'
 
 module WaitingOnRails
   describe Rails do
-    let(:player)     { Player.new }
+    let(:player)     { Player.new('test.mp3') }
     let(:runner)     { Rails.new(player) }
     let(:rails_stub) { Support::CommandStub.new('rails') }
 

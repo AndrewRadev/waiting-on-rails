@@ -2,19 +2,23 @@ require 'waiting_on_rails/player'
 
 module WaitingOnRails
   class Rake
-    def initialize(player = nil)
-      @player = player || WaitingOnRails::Player.new
+    def initialize(music_player, ding_player = nil)
+      @music_player = music_player
+      @ding_player  = ding_player
     end
 
     def run(args)
       if given_tasks_are_slow?(args)
-        @player.start
+        @music_player.start
         Process.wait(spawn_rake_subprocess(args))
       else
         exec_rake_command(args)
       end
+      @music_player.stop
+      sleep 0.5
+      @ding_player.start if @ding_player
     ensure
-      @player.stop
+      @music_player.stop
     end
 
     private

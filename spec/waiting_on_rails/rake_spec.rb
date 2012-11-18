@@ -3,7 +3,7 @@ require 'waiting_on_rails/rake'
 
 module WaitingOnRails
   describe Rake do
-    let(:player)    { Player.new }
+    let(:player)    { Player.new('test.mp3') }
     let(:runner)    { Rake.new(player) }
     let(:rake_stub) { Support::CommandStub.new('rake') }
 

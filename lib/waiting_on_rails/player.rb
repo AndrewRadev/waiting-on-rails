@@ -2,11 +2,12 @@ module WaitingOnRails
   class Player
     attr_reader :pid
 
-    def initialize
+    def initialize(music_path)
+      @music_path = full_path(music_path)
     end
 
     def start
-      @pid = spawn("mplayer #{music_path}", :out => '/dev/null', :err => '/dev/null')
+      @pid = spawn("mplayer #{@music_path}", :out => '/dev/null', :err => '/dev/null')
     end
 
     def stop
@@ -20,8 +21,8 @@ module WaitingOnRails
 
     private
 
-    def music_path
-      File.expand_path("#{File.dirname(__FILE__)}/../../vendor/attempt_1.mp3")
+    def full_path(path)
+      File.expand_path("#{File.dirname(__FILE__)}/../../vendor/#{path}")
     end
   end
 end

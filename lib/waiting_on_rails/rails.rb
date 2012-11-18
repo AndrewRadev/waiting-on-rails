@@ -5,8 +5,9 @@ module WaitingOnRails
   class Exit < Exception; end
 
   class Rails
-    def initialize(player = nil)
-      @player = player || WaitingOnRails::Player.new
+    def initialize(music_player, ding_player = nil)
+      @music_player = music_player
+      @ding_player  = ding_player
     end
 
     def run(args)
@@ -15,14 +16,14 @@ module WaitingOnRails
       end
 
       spawn_rails_subprocess(args) do |output, pid|
-        @player.start
+        @music_player.start
         handle_signals(pid, output)
         main_loop(output)
       end
     rescue Exit
       exit(1)
     ensure
-      @player.stop
+      @music_player.stop
     end
 
     private
@@ -42,7 +43,11 @@ module WaitingOnRails
         begin
           line = io.readline
           puts line
-          @player.stop if matches_server_start?(line)
+          if matches_server_start?(line)
+            @music_player.stop
+            sleep 0.5
+            @ding_player.start if @ding_player
+          end
         rescue EOFError
           break
         rescue Errno::EIO

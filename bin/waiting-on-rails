@@ -2,6 +2,10 @@
 
 $: << File.expand_path('../../lib', __FILE__)
 
+require 'waiting_on_rails/player'
 require 'waiting_on_rails/rails'
 
-WaitingOnRails::Rails.new.run(ARGV)
+music = WaitingOnRails::Player.new('attempt_1.mp3')
+ding  = WaitingOnRails::Player.new('ding.wav')
+
+WaitingOnRails::Rails.new(music, ding).run(ARGV)
