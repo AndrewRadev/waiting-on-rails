@@ -5,6 +5,18 @@ Bored of waiting on `rails server` or `rake routes`? No more! This gem provides 
 
 What's the difference? Aside from running the required task, they also play some relaxing elevator music, so you'll never get bored of waiting again. Problem solved!
 
+<div>
+  <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" height="300" width="200" align="middle">
+    <param name="allowScriptAccess" value="always">
+    <param name="wmode" value="transparent">
+    <param name="movie" value="http://widgets.jamendo.com/en/track/?track_id=839030&amp;playertype=2008&amp;refuid=1011928">
+    <param name="quality" value="high">
+    <param name="bgcolor" value="#FFFFFF">
+    <embed src="http://widgets.jamendo.com/en/track/?track_id=839030&amp;playertype=2008&amp;refuid=1011928" quality="high" wmode="transparent" bgcolor="#FFFFFF" allowscriptaccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" height="300" width="200" align="middle">&nbsp;&nbsp;
+  </object>
+  <a href="http://pro.jamendo.com/" style="display:block;font-size:8px !important;">Royalty-free music for professional licensing</a>
+</div>
+
 ## Gotchas
 
 Okay, so `waiting-on-rails` only plays music for the `server` task, not for the similarly long-loading `console` cousin, but I have no idea how to run the console in a child process and control its IO. Pull requests welcome. And `waiting-on-rake` only plays music for long-running tasks (see `slow_tasks` method in [this file](https://github.com/AndrewRadev/waiting-on-rails/blob/master/lib/waiting_on_rails/rake.rb)), but that's intentional.
