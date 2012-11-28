@@ -9,6 +9,14 @@ What's the difference? Aside from running the required task, they also play some
 
 Okay, so `waiting-on-rails` only plays music for the `server` task, not for the similarly long-loading `console` cousin, but I have no idea how to run the console in a child process and control its IO. Pull requests welcome. And `waiting-on-rake` only plays music for long-running tasks (see `slow_tasks` method in [this file](https://github.com/AndrewRadev/waiting-on-rails/blob/master/lib/waiting_on_rails/rake.rb)), but that's intentional.
 
+Also, it only works for the following webservers:
+
+  - WEBrick
+  - Mongrel
+  - Thin
+
+It should be possible to add support for more by adding to the `matches_server_start?` method in [this file](https://github.com/AndrewRadev/waiting-on-rails/blob/master/lib/waiting_on_rails/rails.rb). Again, pull requests welcome.
+
 ## Installation and Usage Details
 
 The first thing you need to do is install the gem:
