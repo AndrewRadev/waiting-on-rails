@@ -35,5 +35,5 @@ You could run `waiting-on-rails` without using `bundle exec` (unless it's run by
 
 Both music sources are CC-licensed and can be found at the following urls:
 
-Elevator music: http://www.jamendo.com/en/list/a98147/echoes-from-the-past
-Elevator ding: http://soundbible.com/1441-Elevator-Ding.html
+  - Elevator music: http://www.jamendo.com/en/list/a98147/echoes-from-the-past
+  - Elevator ding: http://soundbible.com/1441-Elevator-Ding.html
