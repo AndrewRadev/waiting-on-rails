@@ -21,9 +21,9 @@ It should be possible to add support for more by adding to the `matches_server_s
 
 ## Installation and Usage Details
 
-The first thing you need to do is install the gem:
+The first thing you need to do is install the gem (note the underscores):
 
-    gem install waiting-on-rails
+    gem install waiting_on_rails
 
 The gem requires `mplayer` to play its music. On a Mac, you can install mplayer with homebrew:
 
