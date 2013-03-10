@@ -1,0 +1,14 @@
+#! /usr/bin/env ruby
+
+$: << File.expand_path('../../lib', __FILE__)
+
+require 'waiting_on_rails/anything'
+
+if ARGV.empty?
+  puts 'USAGE: waiting-on <command>'
+end
+
+music = WaitingOnRails::Player.new('attempt_1.mp3')
+ding  = WaitingOnRails::Player.new('ding.wav')
+
+WaitingOnRails::Anything.new(music, ding).run(ARGV)

@@ -1,0 +1,13 @@
+#! /usr/bin/env ruby
+
+require 'socket'
+
+filename = File.expand_path(File.dirname(__FILE__) + '/../../../tmp/command.socket')
+socket = UNIXServer.new(filename).accept
+
+begin
+  while line = socket.readline
+    puts line
+  end
+rescue EOFError
+end
