@@ -1,11 +1,17 @@
 [![Build Status](https://travis-ci.org/AndrewRadev/waiting-on-rails.png)](https://travis-ci.org/AndrewRadev/waiting-on-rails)
 
-Bored of waiting on `rails server` or `rake routes`? No more! This gem provides two commands, `waiting-on-rails` and `waiting-on-rake`. They are meant as replacements to `rails` and `rake`, respectively, so you can call them like this:
+Bored of waiting on `rails server` or `rake routes`? No more! This gem provides three commands, `waiting-on-rails`, `waiting-on-rake`, and the generic `waiting-on`. The first two are meant as replacements to `rails` and `rake`, respectively, so you can call them like this:
 
     waiting-on-rails server
     waiting-on-rake db:migrate
 
 What's the difference? Aside from running the required task, they also play some relaxing elevator music, so you'll never get bored of waiting again. Problem solved!
+
+You can use the third one, `waiting-on` with any command and it'll play music until it's done:
+
+    waiting-on rspec spec
+    waiting-on cucumber
+    waiting-on cap deploy
 
 ## Gotchas
 
