@@ -22,5 +22,5 @@ Gem::Specification.new do |s|
 
   s.files        = Dir['{lib}/**/*.rb', 'bin/*', 'vendor/*', 'LICENSE', '*.md']
   s.require_path = 'lib'
-  s.executables  = ['waiting-on-rails', 'waiting-on-rake']
+  s.executables  = ['waiting-on-rails', 'waiting-on-rake', 'waiting-on']
 end
