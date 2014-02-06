@@ -75,14 +75,13 @@ module WaitingOnRails
     end
 
     def should_play_music?(args)
-      File.exists?('script/rails') and args.find { |arg| ['server', 's'].include? arg }
+      args.find { |arg| ['server', 's'].include? arg }
     end
 
     def matches_server_start?(string)
       patterns = [
         'WEBrick::HTTPServer#start', # WEBrick
         'Listening on',              # Thin
-        'Ctrl-C to shutdown',        # Mongrel
       ]
 
       patterns.any? { |p| string.include?(p) }

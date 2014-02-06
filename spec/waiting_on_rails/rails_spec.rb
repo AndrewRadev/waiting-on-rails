@@ -8,8 +8,6 @@ module WaitingOnRails
     let(:rails_stub) { Support::CommandStub.new('rails') }
 
     it "stops the music after seeing that the server was started" do
-      runner.stub(:should_play_music? => true)
-
       thread = Thread.new { runner.run(['server']) }
 
       rails_stub.init
