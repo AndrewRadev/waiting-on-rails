@@ -1,5 +1,10 @@
 #! /usr/bin/env ruby
 
+begin
+  require 'bundler/setup'
+rescue LoadError
+end
+
 $: << File.expand_path('../../lib', __FILE__)
 
 require 'waiting_on_rails/rake'
