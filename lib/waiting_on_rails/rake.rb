@@ -9,7 +9,7 @@ module WaitingOnRails
 
     def run(args)
       if given_tasks_are_slow?(args)
-        @music_player.start
+        @music_player.start(loop: true)
         Process.wait(spawn_rake_subprocess(args))
       else
         exec_rake_command(args)

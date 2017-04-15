@@ -14,6 +14,11 @@ module WaitingOnRails
       expect(player.pid).to be_a_running_process
     end
 
+    it "accepts the `loop` option" do
+      player.start(loop: true)
+      expect(player.pid).to be_a_running_process
+    end
+
     it "kills itself correctly" do
       player.start
       player.stop

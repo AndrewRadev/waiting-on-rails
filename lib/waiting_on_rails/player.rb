@@ -6,8 +6,14 @@ module WaitingOnRails
       @music_path = full_path(music_path)
     end
 
-    def start
-      @pid = spawn("mplayer #{@music_path}", out: '/dev/null', err: '/dev/null')
+    def start(loop: false)
+      if loop
+        loop_flag = '-loop 0'
+      else
+        loop_flag = ''
+      end
+
+      @pid = spawn("mplayer #{loop_flag} #{@music_path}", out: '/dev/null', err: '/dev/null')
     end
 
     def stop

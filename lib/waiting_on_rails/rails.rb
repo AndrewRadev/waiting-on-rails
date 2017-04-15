@@ -16,7 +16,7 @@ module WaitingOnRails
       end
 
       spawn_rails_subprocess(args) do |output, pid|
-        @music_player.start
+        @music_player.start(loop: true)
         handle_signals(pid, output)
         main_loop(output)
       end

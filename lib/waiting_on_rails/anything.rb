@@ -8,7 +8,7 @@ module WaitingOnRails
     end
 
     def run(args)
-      @music_player.start
+      @music_player.start(loop: true)
       Process.wait(spawn_subprocess(args))
       @music_player.stop
       sleep 0.5
