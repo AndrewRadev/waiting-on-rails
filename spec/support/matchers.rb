@@ -1,5 +1,5 @@
 RSpec::Matchers.define :be_a_running_process do
-  match_for_should do |pid|
+  match do |pid|
     if pid.nil?
       false
     else
@@ -12,7 +12,7 @@ RSpec::Matchers.define :be_a_running_process do
     end
   end
 
-  match_for_should_not do |pid|
+  match_when_negated do |pid|
     if pid.nil?
       true
     else

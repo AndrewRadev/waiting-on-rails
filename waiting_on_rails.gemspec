@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
     server is ready.
   D
 
-  s.add_development_dependency 'rspec', '>= 2.0.0'
+  s.add_development_dependency 'rspec', '>= 3.0.0'
   s.add_development_dependency 'rake'
 
   s.required_rubygems_version = '>= 1.3.6'

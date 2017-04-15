@@ -18,7 +18,7 @@ module WaitingOnRails
         => Ctrl-C to shutdown server
       EOF
 
-      player.pid.should be_a_running_process
+      expect(player.pid).to be_a_running_process
 
       rails_stub.add_output <<-EOF
         [2012-10-04 18:48:21] INFO  WEBrick 1.3.1
@@ -26,7 +26,7 @@ module WaitingOnRails
         [2012-10-04 18:48:21] INFO  WEBrick::HTTPServer#start: pid=18105 port=3000
       EOF
       sleep 0.5
-      player.pid.should_not be_a_running_process
+      expect(player.pid).to_not be_a_running_process
 
       # TODO (2012-10-04) Not very nice what with the SystemExit. Figure out a way to refactor.
       begin

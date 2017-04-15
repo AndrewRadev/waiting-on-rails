@@ -8,11 +8,11 @@ module WaitingOnRails
     let(:rake_stub) { Support::CommandStub.new('rake') }
 
     before :each do
-      runner.stub(:exec_rake_command)
+      allow(runner).to receive(:exec_rake_command)
     end
 
     it "just execs 'rake' if the given command is not one of the slow ones" do
-      runner.should_receive(:exec_rake_command)
+      expect(runner).to receive(:exec_rake_command)
       runner.run(['some_fast_task'])
     end
 
@@ -21,12 +21,12 @@ module WaitingOnRails
 
       rake_stub.init
 
-      player.pid.should be_a_running_process
+      expect(player.pid).to be_a_running_process
 
       rake_stub.finish
       thread.join
 
-      player.pid.should_not be_a_running_process
+      expect(player.pid).to_not be_a_running_process
     end
   end
 end

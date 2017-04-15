@@ -12,12 +12,12 @@ module WaitingOnRails
 
       command_stub.init
 
-      player.pid.should be_a_running_process
+      expect(player.pid).to be_a_running_process
 
       command_stub.finish
       thread.join
 
-      player.pid.should_not be_a_running_process
+      expect(player.pid).to_not be_a_running_process
     end
   end
 end
