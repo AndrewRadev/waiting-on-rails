@@ -12,18 +12,20 @@ module WaitingOnRails
 
       rails_stub.init
       rails_stub.add_output <<-EOF
-        => Booting WEBrick
-        => Rails 3.0.x application starting in development on http://0.0.0.0:3000
-        => Call with -d to detach
-        => Ctrl-C to shutdown server
+        => Booting Puma
+        => Rails 5.x.x application starting in development on http://localhost:3000
+        => Run `rails server -h` for more startup options
       EOF
 
       expect(player.pid).to be_a_running_process
 
       rails_stub.add_output <<-EOF
-        [2012-10-04 18:48:21] INFO  WEBrick 1.3.1
-        [2012-10-04 18:48:21] INFO  ruby 1.9.3 (2012-04-20) [x86_64-linux]
-        [2012-10-04 18:48:21] INFO  WEBrick::HTTPServer#start: pid=18105 port=3000
+        Puma starting in single mode...
+        * Version 3.x.x (ruby 2.x.x-pxxx), codename: Something Something
+        * Min threads: 5, max threads: 5
+        * Environment: development
+        * Listening on tcp://localhost:3000
+        Use Ctrl-C to stop
       EOF
       sleep 0.5
       expect(player.pid).to_not be_a_running_process

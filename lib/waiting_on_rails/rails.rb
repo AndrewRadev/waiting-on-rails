@@ -81,7 +81,7 @@ module WaitingOnRails
     def matches_server_start?(string)
       patterns = [
         'WEBrick::HTTPServer#start', # WEBrick
-        'Listening on',              # Thin
+        'Listening on',              # Thin, Puma
       ]
 
       patterns.any? { |p| string.include?(p) }

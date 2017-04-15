@@ -10,7 +10,6 @@ What's the difference? Aside from running the required task, they also play some
 You can use the third one, `waiting-on` with any command and it'll play music until it's done:
 
     waiting-on rspec spec
-    waiting-on cucumber
     waiting-on cap deploy
 
 ## Gotchas
@@ -22,6 +21,7 @@ Also, it only works for the following webservers:
   - WEBrick
   - Mongrel
   - Thin
+  - Puma
 
 It should be possible to add support for more by adding to the `matches_server_start?` method in [this file](https://github.com/AndrewRadev/waiting-on-rails/blob/master/lib/waiting_on_rails/rails.rb). Again, pull requests welcome.
 
@@ -39,11 +39,10 @@ On Linux, you should use your distribution's package manager. For Arch Linux, th
 
     pacman -S mplayer
 
-You could run `waiting-on-rails` without using `bundle exec` (unless it's run by a bundle-exec-ed script, like with a Procfile), but you probably won't be able to with `waiting-on-rake`. So if you're serious about battling boring loading times, you're going to have to add it to your Gemfile with a `:require => false`. If you just want a quick laugh, install the gem globally and start your project with `waiting-on-rails s`. Preferably in front of your unsuspecting coworkers. Amusement not guaranteed, but very likely.
+You could run `waiting-on-rails` without using `bundle exec` (unless it's run by a bundle-exec-ed script, like with a Procfile), but you probably won't be able to with `waiting-on-rake`. So if you're serious about battling boring loading times, you're going to have to add it to your Gemfile with a `require: false`. If you just want a quick laugh, install the gem globally and start your project with `waiting-on-rails s`. Preferably in front of your unsuspecting coworkers. Amusement not guaranteed, but very likely.
 
 ## TODO
 
-  - Implement `waiting-on-spork`?
   - Implement continuing from a point. Could save a temporary file somewhere with the time at which the music was stopped.
   - Implement simple configuration, controlling what song to play, or even something different to do (like show a notification). Warning: might make the project actually useful, consider carefully.
 

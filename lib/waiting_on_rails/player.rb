@@ -7,7 +7,7 @@ module WaitingOnRails
     end
 
     def start
-      @pid = spawn("mplayer #{@music_path}", :out => '/dev/null', :err => '/dev/null')
+      @pid = spawn("mplayer #{@music_path}", out: '/dev/null', err: '/dev/null')
     end
 
     def stop
