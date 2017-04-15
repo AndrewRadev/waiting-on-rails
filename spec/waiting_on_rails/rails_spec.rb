@@ -30,7 +30,7 @@ module WaitingOnRails
       sleep 0.5
       expect(player.pid).to_not be_a_running_process
 
-      # TODO (2012-10-04) Not very nice what with the SystemExit. Figure out a way to refactor.
+      # The exit() call kills the test process if we don't rescue it
       begin
         rails_stub.finish
         thread.join
