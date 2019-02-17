@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Andrew Radev', 'Joan Karadimov']
   s.email       = ['andrey.radev@gmail.com']
-  s.homepage    = 'http://github.com/AndrewRadev/waiting_on_rails'
+  s.homepage    = 'http://github.com/AndrewRadev/waiting-on-rails'
   s.summary     = 'Plays elevator music until `rails server` boots'
   s.description = <<-D
     Bored of waiting on "rails server"? No more! This gem plays some nice
