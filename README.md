@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/AndrewRadev/waiting-on-rails.png)](https://travis-ci.org/AndrewRadev/waiting-on-rails)
+[![Build Status](https://travis-ci.org/AndrewRadev/waiting-on-rails.svg)](https://travis-ci.org/AndrewRadev/waiting-on-rails)
 
 Bored of waiting on `rails server` or `rake routes`? No more! This gem provides three commands, `waiting-on-rails`, `waiting-on-rake`, and the generic `waiting-on`. The first two are meant as replacements to `rails` and `rake`, respectively, so you can call them like this:
 
